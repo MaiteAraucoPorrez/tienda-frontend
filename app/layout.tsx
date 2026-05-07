@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import React from "react";
+import NavbarWrapper from "@/components/NavbarWrapper";
 
+export const metadata: Metadata = {
+  title: "Tienda — Panel de Control",
+  description: "Sistema de gestión de productos y ventas",
+};
 
-function Navbar({ title }: { title?: string }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <header className="navbar">
-      <div className="navbar-content">
-      </div>
-    </header>
-  );
-}
-
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <Navbar/>
-      <div className="container">
-        <main className="main">{children}</main>
-      </div>
-    </>
+    <html lang="es">
+      <body>
+        <div className="app-shell">
+          <NavbarWrapper />
+          <main>{children}</main>
+        </div>
+      </body>
+    </html>
   );
 }
